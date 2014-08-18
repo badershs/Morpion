@@ -17,6 +17,9 @@ public class Appli2 extends JPanel{
 	public int y = 0 ;
 	public boolean tour = true ;
 	
+	public int bleu = 0 ;
+	public int rouge = 0 ;
+	
 	public Appli2(){
 		   this.addMouseListener(new MouseAdapter(){
 			      public void mousePressed(MouseEvent e){
@@ -148,14 +151,16 @@ public class Appli2 extends JPanel{
 					g.setColor(Color.red);
 					 g.setFont(new Font("Arial", Font.BOLD, 20));
 					 
-					 g.drawString("Bravo ,Tu as gagné , croix rouge ! ", 200, 150);
+					 g.drawString("Bravo ,Tu as gagné , croix rouge ! ", 5, 150);
+					 rouge ++ ;
 				}else{
 					tour = true ;
 					System.out.println("bravo " + tour );
-					g.setColor(Color.red);
+					g.setColor(Color.blue);
 					 g.setFont(new Font("Arial", Font.BOLD, 20));
 					 
-					 g.drawString("Bravo ,Tu as gagné , croix bleu ! ", 200, 150);
+					 g.drawString("Bravo ,Tu as gagné , croix bleu ! ", 5, 150);
+					 bleu ++ ;
 				}
 			}
 			
