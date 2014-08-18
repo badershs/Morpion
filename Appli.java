@@ -1,4 +1,3 @@
-//copyrigth
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -11,12 +10,47 @@ import javax.swing.*;
 
 public class Appli extends JFrame{
 	private Appli2 p = new Appli2() ;
+	private JMenuBar m = new JMenuBar();
+	private JMenu m1 = new JMenu("Parametre");
+	private JMenuItem i = new JMenuItem("Score");
+	private JMenuItem i2 = new JMenuItem("ReCommencer");
+	private JMenu m2 = new JMenu("?");
 	
 	public Appli(){
 		this.setTitle("Tic Tac Toc");
-	    this.setSize(320, 325);
+	    this.setSize(320, 345);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);
+	    m1.add(i);
+	    i.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent event){
+	    		JOptionPane j = new JOptionPane() ;
+	    		j.showMessageDialog(null ,"Score du bleu :" + p.bleu +"\n Score du rouge :"+ p.rouge,"Score" , JOptionPane.INFORMATION_MESSAGE);
+	    	}
+		});
+	    m1.add(i2);
+	    i2.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent event){
+	    		int pp = 2 ;
+	    		for(int i = 0 ; i < p.t.length ;i++){
+	    			for(int j = 0 ; j < p.t[0].length ;j++){
+	    				p.t[i][j] = pp ;
+	    				pp++ ;
+	    			}
+	    		}
+	    	p.repaint();
+	    	if(p.tour){
+	    		p.bleu -- ;
+	    	}
+	    	else {
+	    		p.rouge--;
+	    	}
+	    	
+	    	}
+		});
+	    m.add(m1);
+	    m.add(m2);
+	    this.setJMenuBar(m) ;
 	    this.setContentPane(p);
 	    this.setVisible(true);
 	   //this.setResizable(false); 
